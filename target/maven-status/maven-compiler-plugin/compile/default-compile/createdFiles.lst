@@ -1,0 +1,8 @@
+com\example\simpleserver\repository\TaskRepository.class
+com\example\simpleserver\model\SyncResponse.class
+com\example\simpleserver\model\Task.class
+com\example\simpleserver\service\TaskService.class
+com\example\simpleserver\config\WebConfig.class
+com\example\simpleserver\controller\TaskController.class
+com\example\simpleserver\SimpleServerApplication.class
+com\example\simpleserver\config\DatabaseConfig.class

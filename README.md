@@ -1,0 +1,209 @@
+# SimpleServer 任务管理系统API
+
+## 📚 重要文档参考
+- [📘 API接口文档](docs/API_DOCUMENTATION.md) - 完整的API接口说明，供客户端开发参考
+- [📋 项目规范文档](docs/PROJECT_SPECIFICATION.md) - 完整的开发和部署规范
+- [⚡ 快速参考卡片](docs/QUICK_REFERENCE.md) - 常用命令和问题解决方案
+- [📁 项目结构说明](PROJECT_STRUCTURE.md) - 详细的文件目录结构说明
+- [🖥️ CentOS部署指南](DEPLOY_CENTOS_HOME.md) - 服务器部署详细说明
+- [📦 部署包说明](DEPLOY_PACKAGE_HOME.md) - 部署包使用指南
+- [📑 文档中心](docs/) - 完整文档目录
+
+## 项目概述
+这是一个基于Spring Boot的RESTful API服务，用于任务管理和同步功能。支持与MySQL 5.7数据库的连接，提供完整的CRUD操作和任务同步功能。
+
+## 技术栈
+- Java 8
+- Spring Boot 2.7.0
+- Spring Data JPA
+- MySQL 5.7
+- Maven 3.x
+- Lombok
+
+## 项目结构
+```
+
+simpleServer/
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/example/simpleserver/
+│       │       ├── controller/     # 控制器层
+│       │       ├── service/        # 业务逻辑层
+│       │       ├── repository/     # 数据访问层
+│       │       ├── model/          # 实体模型层
+│       │       ├── config/         # 配置类
+│       │       └── SimpleServerApplication.java  # 启动类
+│       └── resources/      # 资源文件
+│           ├── application.properties  # 应用配置
+│           └── db/         # 数据库脚本
+├── target/                 # Maven构建输出目录
+├── deploy/                 # 部署文件目录
+├── docs/                   # 文档目录
+├── scripts/                # 脚本工具目录
+├── test/                   # 测试文件目录
+├── apache-maven-3.8.6/     # 本地Maven安装目录
+├── pom.xml                 # Maven项目配置文件
+└── README.md               # 项目说明文档
+```
+## 数据库配置
+
+### 1. 创建数据库
+运行 `src/main/resources/db/init.sql` 脚本来创建数据库和表结构。
+
+### 2. 配置数据库连接
+修改 `src/main/resources/application.properties` 文件中的数据库连接信息：
+
+```
+properties
+spring.datasource.url=jdbc:mysql://localhost:3306/simpleserver?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+```
+## API接口说明
+
+### 1. 同步任务
+**POST** `/api/tasks/sync`
+- 功能：批量同步任务
+- 请求体：任务对象数组
+- 响应：SyncResponse对象
+
+### 2. 获取所有任务
+**GET** `/api/tasks`
+- 功能：获取所有任务，按更新时间倒序排列
+- 响应：任务对象数组
+
+### 3. 获取单个任务
+**GET** `/api/tasks/{id}`
+- 功能：根据ID获取特定任务
+- 响应：任务对象
+
+### 4. 创建任务
+**POST** `/api/tasks`
+- 功能：创建新任务
+- 请求体：任务对象
+- 响应：创建的任务对象
+
+### 5. 更新任务
+**PUT** `/api/tasks/{id}`
+- 功能：更新指定ID的任务
+- 请求体：任务对象
+- 响应：更新后的任务对象
+
+### 6. 删除任务
+**DELETE** `/api/tasks/{id}`
+- 功能：删除指定ID的任务
+- 响应：204 No Content
+
+## 任务对象结构
+```
+json
+{
+    "id": 1,
+    "name": "任务名称",
+    "timeInMillis": 1640995200000,
+    "isMonthly": false,
+    "remindCount": 0,
+    "isDone": false,
+    "remarks": "备注信息",
+    "imagePaths": "[\"path1\", \"path2\"]",
+    "maxRetries": 3,
+    "retryIntervalHours": 1,
+    "repeatMode": 0,
+    "createdAt": "2022-01-01 00:00:00",
+    "updatedAt": "2022-01-01 00:00:00"
+}
+```
+## 同步响应结构
+```
+json
+{
+    "success": true,
+    "message": "任务同步成功",
+    "count": 5
+}
+```
+## 运行项目
+
+### 方法1：使用Maven
+```
+bash
+mvn spring-boot:run
+```
+### 方法2：使用IDE
+直接运行 `SimpleServerApplication.java` 的main方法
+
+### 方法3：打包运行
+```
+bash
+mvn clean package
+java -jar target/simpleServer-1.0.0.jar
+```
+## 测试API
+
+项目启动后，默认端口为37210，可以通过以下方式进行测试：
+
+### 使用curl测试
+```
+bash
+# 获取所有任务
+curl http://localhost:37210/api/tasks
+
+# 创建新任务
+curl -X POST http://localhost:37210/api/tasks \
+  -H "Content-Type: application/json" \
+  -d '{"name":"测试任务","timeInMillis":1640995200000,"isDone":false}'
+
+# 同步任务
+curl -X POST http://localhost:37210/api/tasks/sync \
+  -H "Content-Type: application/json" \
+  -d '[{"name":"任务1","timeInMillis":1640995200000},{"name":"任务2","timeInMillis":1640995200000}]'
+```
+### 使用Postman测试
+导入以下集合进行API测试：
+- GET http://localhost:37210/api/tasks
+- POST http://localhost:37210/api/tasks
+- POST http://localhost:37210/api/tasks/sync
+
+## 注意事项
+
+1. **数据库准备**：确保MySQL服务已启动，并且数据库用户具有相应权限
+2. **时间戳处理**：使用毫秒级时间戳（timeInMillis），确保跨设备一致性
+3. **JSON数组处理**：imagePaths字段存储为JSON字符串
+4. **废弃字段**：isMonthly字段已废弃，建议使用repeatMode字段
+5. **错误处理**：
+   - 400错误：客户端请求格式错误
+   - 500错误：服务器内部错误
+
+## 开发环境要求
+- Java 8 或更高版本
+- MySQL 5.7 或更高版本
+- Maven 3.x 或使用IDE内置Maven
+
+## 部署说明
+1. 修改生产环境的数据库配置
+2. 打包应用：`mvn clean package`
+3. 运行jar包：`java -jar simpleServer-1.0.0.jar`
+4. 可通过 `-Dserver.port=端口号` 指定端口
+
+## 脚本工具使用
+
+### 本地开发
+```
+cmd
+# 快速启动
+scripts\run.bat
+
+# 项目构建（仅编译，不打包）
+scrips\build.bat
+
+# 构建并生成完整部署包（推荐用于发布）
+scripts\build-and-package.bat
+```
+### 服务器部署
+```
+bash
+# 上传deploy目录到服务器后执行
+chmod +x start-simpleServer.sh health-check.sh
+./start-simpleServer.sh start
+```
