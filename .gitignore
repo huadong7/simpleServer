@@ -30,7 +30,7 @@ bin/
 
 ### 敏感配置文件 ###
 # 本地开发配置
-src/main/resources/application.properties
+src/main/resources/application-local.properties
 
 # 生产环境配置
 src/main/resources/application-prod.properties
@@ -46,6 +46,9 @@ src/main/resources/db/*.local.sql
 # 日志文件
 logs/
 *.log
+
+# 部署目录中的敏感配置
+deploy/conf/application.properties
 
 # 临时文件
 temp/
