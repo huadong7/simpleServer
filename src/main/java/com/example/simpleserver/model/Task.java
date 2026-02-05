@@ -52,6 +52,9 @@ public class Task {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updatedAt;
     
+    @Column(name = "is_delete")
+    private Boolean isDelete = false;
+    
     @PrePersist
     protected void onCreate() {
         createdAt = new Date();
@@ -61,6 +64,16 @@ public class Task {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = new Date();
+    }
+    
+    // 软删除相关方法
+    public void markAsDeleted() {
+        this.isDelete = true;
+        this.updatedAt = new Date();
+    }
+    
+    public boolean isDeleted() {
+        return this.isDelete != null && this.isDelete;
     }
     
     // 显式添加setId方法以解决编译问题

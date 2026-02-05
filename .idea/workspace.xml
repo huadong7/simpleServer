@@ -4,145 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="052fefe8-acca-40c5-a395-83b2116c0b76" name="更改" comment="init">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DEPLOYMENT.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DEPLOY_CENTOS_HOME.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DEPLOY_PACKAGE_HOME.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PROJECT_STRUCTURE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/NOTICE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/boot/plexus-classworlds-2.6.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/boot/plexus-classworlds.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/conf/logging/simplelogger.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/conf/settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/conf/toolchains.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/commons-cli-1.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/commons-cli.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/commons-io-2.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/commons-io.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/commons-lang3-3.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/commons-lang3.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/ext/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/guava-25.1-android.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/guava.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/guice-4.2.2-no_aop.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/guice.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/jansi-2.4.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/jansi-native/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/jansi-native/Windows/x86/jansi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/jansi-native/Windows/x86_64/jansi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/jansi.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/javax.annotation-api-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/javax.annotation-api.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/javax.inject-1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/javax.inject.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/jcl-over-slf4j-1.7.36.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/jcl-over-slf4j.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-artifact-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-builder-support-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-compat-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-core-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-embedder-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-model-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-model-builder-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-plugin-api-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-repository-metadata-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-resolver-api-1.6.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-resolver-connector-basic-1.6.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-resolver-impl-1.6.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-resolver-provider-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-resolver-spi-1.6.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-resolver-transport-wagon-1.6.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-resolver-util-1.6.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-settings-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-settings-builder-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-shared-utils-3.3.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/maven-slf4j-provider-3.8.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/org.eclipse.sisu.inject-0.3.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/org.eclipse.sisu.inject.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/org.eclipse.sisu.plexus-0.3.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/org.eclipse.sisu.plexus.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/plexus-cipher-2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/plexus-cipher.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/plexus-component-annotations-2.1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/plexus-component-annotations.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/plexus-interpolation-1.26.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/plexus-interpolation.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/plexus-sec-dispatcher-2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/plexus-sec-dispatcher.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/plexus-utils-3.3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/plexus-utils.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/slf4j-api-1.7.36.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/slf4j-api.license" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/wagon-file-3.5.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/wagon-http-3.5.1-shaded.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apache-maven-3.8.6/lib/wagon-provider-api-3.5.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application-prod.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/DEPLOY_CENTOS_HOME.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/DEPLOY_PACKAGE_HOME.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/health-check.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/simpleServer-1.0.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/start-simpleServer.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/API_DOCUMENTATION.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/API_QUICK_REFERENCE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/DOCUMENTATION_INDEX.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/PROJECT_SPECIFICATION.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/QUICK_REFERENCE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/SCRIPT_TOOLS_GUIDE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run.ps1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/build.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/deploy-centos.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/health-check.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/run.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start-simpleServer.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-local.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpleServer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/SimpleServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/config/DatabaseConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/controller/TaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/model/SyncResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/model/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/repository/TaskRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/service/TaskService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-new.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/complete_init.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/init.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/sample_data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/simpleserver_init.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/simpleserver/TaskModelTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application-new.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/SimpleServerApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/config/DatabaseConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/config/WebConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/controller/TaskController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/model/SyncResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/model/Task.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/repository/TaskRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/service/TaskService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/db/complete_init.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/db/init.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/db/sample_data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/db/simpleserver_init.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/simpleServer-1.0.0.jar.original" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/simpleserver/model/TaskModelTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test-task.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test-tasks-array.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test_api.py" afterDir="false" />
+    <list default="true" id="052fefe8-acca-40c5-a395-83b2116c0b76" name="更改" comment="feat(config): 实现多环境配置管理和软删除功能&#10;&#10;- 添加多环境配置文件支持，分离敏感配置信息&#10;- 创建 application-local.properties 和 application-prod.properties 模板&#10;- 更新 .gitignore 规则保护敏感配置文件和日志文件&#10;- 在 Task 实体中添加 isDelete 字段实现软删除机制&#10;- 修改删除接口为逻辑删除，添加任务恢复功能&#10;- 更新所有查询接口自动过滤已删除的任务&#10;- 添加版本变更记录和软删除使用说明&#10;- 修改运行脚本支持本地配置文件检查和profile加载&#10;- 更新 README.md 文档包含软删除和安全配置说明">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/run.bat" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/repository/TaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/simpleserver/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-new.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/simpleserver/controller/TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/controller/TaskController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/simpleserver/model/Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/model/Task.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/simpleserver/repository/TaskRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/repository/TaskRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/simpleserver/service/TaskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/simpleserver/service/TaskService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +30,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;huadong7&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/huadong7/simpleServer.git&quot;,
+    &quot;accountId&quot;: &quot;6601a1d8-449e-4036-b6f3-4d737984fa30&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="C:\pro\yt\simpleServer\apache-maven-3.8.6" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -159,32 +57,77 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
+    <option name="showModules" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/pro/yt/simpleServer",
-    "onboarding.tips.debug.path": "C:/pro/yt/simpleServer/src/Main.java",
-    "应用程序.Main.executor": "Run",
-    "应用程序.SimpleTodoApplication.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.simpleServer.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.run.ps1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.run.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/pro/yt/simpleServer/src/main/resources&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/pro/yt/simpleServer/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;全局库&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.SimpleTodoApplication.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="simpleServer" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="simpleServer" />
-      <option name="filePath" />
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\pro\yt\simpleServer\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PowerShell.run.ps1 (1)">
+    <configuration name="simpleServer" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
       <method v="2" />
     </configuration>
+    <configuration name="run.ps1 (1)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/run.ps1" executablePath="$PROJECT_DIR$/../../../WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe">
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="run.ps1" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/run.ps1" executablePath="$PROJECT_DIR$/../../../WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe">
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PowerShell.run.ps1 (1)" />
+        <item itemvalue="PowerShell.run.ps1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -195,6 +138,23 @@
       <option name="presentableId" value="Default" />
       <updated>1770119341120</updated>
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1770167849571</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1770167849572</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat(config): 实现多环境配置管理和软删除功能&#10;&#10;- 添加多环境配置文件支持，分离敏感配置信息&#10;- 创建 application-local.properties 和 application-prod.properties 模板&#10;- 更新 .gitignore 规则保护敏感配置文件和日志文件&#10;- 在 Task 实体中添加 isDelete 字段实现软删除机制&#10;- 修改删除接口为逻辑删除，添加任务恢复功能&#10;- 更新所有查询接口自动过滤已删除的任务&#10;- 添加版本变更记录和软删除使用说明&#10;- 修改运行脚本支持本地配置文件检查和profile加载&#10;- 更新 README.md 文档包含软删除和安全配置说明">
+      <option name="closed" value="true" />
+      <created>1770272022396</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1770272022396</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -210,6 +170,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="feat(config): 实现多环境配置管理和软删除功能&#10;&#10;- 添加多环境配置文件支持，分离敏感配置信息&#10;- 创建 application-local.properties 和 application-prod.properties 模板&#10;- 更新 .gitignore 规则保护敏感配置文件和日志文件&#10;- 在 Task 实体中添加 isDelete 字段实现软删除机制&#10;- 修改删除接口为逻辑删除，添加任务恢复功能&#10;- 更新所有查询接口自动过滤已删除的任务&#10;- 添加版本变更记录和软删除使用说明&#10;- 修改运行脚本支持本地配置文件检查和profile加载&#10;- 更新 README.md 文档包含软删除和安全配置说明" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(config): 实现多环境配置管理和软删除功能&#10;&#10;- 添加多环境配置文件支持，分离敏感配置信息&#10;- 创建 application-local.properties 和 application-prod.properties 模板&#10;- 更新 .gitignore 规则保护敏感配置文件和日志文件&#10;- 在 Task 实体中添加 isDelete 字段实现软删除机制&#10;- 修改删除接口为逻辑删除，添加任务恢复功能&#10;- 更新所有查询接口自动过滤已删除的任务&#10;- 添加版本变更记录和软删除使用说明&#10;- 修改运行脚本支持本地配置文件检查和profile加载&#10;- 更新 README.md 文档包含软删除和安全配置说明" />
   </component>
 </project>

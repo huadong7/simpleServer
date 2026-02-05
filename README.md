@@ -23,6 +23,40 @@
 ## 项目结构
 ```
 
+## 版本变更记录
+
+### v1.2.0 - 安全配置增强（2024年）
+- ✅ 实现多环境配置管理，分离敏感信息
+- ✅ 添加 `.gitignore` 规则保护敏感配置文件
+- ✅ 创建本地开发配置 `application-local.properties`
+- ✅ 创建生产环境配置模板 `application-prod.properties`
+- ✅ 支持环境变量配置（`.env` 文件）
+- ✅ 更新主配置文件使用占位符
+- ✅ 添加安全配置检查脚本 `setup-security.bat`
+- ✅ 更新运行脚本支持profile配置
+- ✅ 添加安全配置文档和检查清单
+- ✅ 相关文件变更：
+  - `application.properties`: 改为占位符配置
+  - `.gitignore`: 添加敏感文件排除规则
+  - 新增多个配置模板文件和文档
+
+### v1.1.0 - 软删除功能（2024年）
+- ✅ 实现软删除机制，在 tasks 表中添加 is_delete 字段
+- ✅ 修改删除接口为逻辑删除，数据不会真正从数据库移除
+- ✅ 添加任务恢复接口 `/api/tasks/{id}/restore`
+- ✅ 更新所有查询接口，自动过滤已删除的任务
+- ✅ 提供数据库字段更新脚本 `src/main/resources/db/add_is_delete_column.sql`
+- ✅ 相关文件变更：
+  - `Task.java`: 添加 isDelete 字段和相关方法
+  - `TaskRepository.java`: 添加软删除查询方法
+  - `TaskService.java`: 实现软删除和恢复逻辑
+  - `TaskController.java`: 添加任务恢复接口
+
+### v1.0.0 - 初始版本
+- ✅ 基础的CRUD操作
+- ✅ 任务同步功能
+- ✅ MySQL数据库集成
+- ✅ RESTful API设计
 simpleServer/
 ├── src/
 │   └── main/
@@ -90,10 +124,15 @@ spring.datasource.password=your_password
 - 请求体：任务对象
 - 响应：更新后的任务对象
 
-### 6. 删除任务
+### 6. 删除任务（软删除）
 **DELETE** `/api/tasks/{id}`
-- 功能：删除指定ID的任务
+- 功能：逻辑删除指定ID的任务（标记为已删除）
 - 响应：204 No Content
+
+### 7. 恢复任务
+**PUT** `/api/tasks/{id}/restore`
+- 功能：恢复已删除的任务
+- 响应：成功消息或404 Not Found
 
 ## 任务对象结构
 ```
@@ -171,7 +210,8 @@ curl -X POST http://localhost:37210/api/tasks/sync \
 2. **时间戳处理**：使用毫秒级时间戳（timeInMillis），确保跨设备一致性
 3. **JSON数组处理**：imagePaths字段存储为JSON字符串
 4. **废弃字段**：isMonthly字段已废弃，建议使用repeatMode字段
-5. **错误处理**：
+5. **软删除机制**：删除操作为逻辑删除，不会真正从数据库移除数据
+6. **错误处理**：
    - 400错误：客户端请求格式错误
    - 500错误：服务器内部错误
 
@@ -182,9 +222,10 @@ curl -X POST http://localhost:37210/api/tasks/sync \
 
 ## 部署说明
 1. 修改生产环境的数据库配置
-2. 打包应用：`mvn clean package`
-3. 运行jar包：`java -jar simpleServer-1.0.0.jar`
-4. 可通过 `-Dserver.port=端口号` 指定端口
+2. 如果是从旧版本升级，请先执行软删除字段添加脚本：`src/main/resources/db/add_is_delete_column.sql`
+3. 打包应用：`mvn clean package`
+4. 运行jar包：`java -jar simpleServer-1.0.0.jar`
+5. 可通过 `-Dserver.port=端口号` 指定端口
 
 ## 脚本工具使用
 

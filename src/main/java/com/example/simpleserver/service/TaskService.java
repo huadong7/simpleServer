@@ -71,11 +71,13 @@ public class TaskService {
     }
 
     public List<Task> getAllTasks() {
-        return taskRepository.findAllByOrderByUpdatedAtDesc();
+        return taskRepository.findAllActiveByOrderByUpdatedAtDesc();
     }
     
     public Task getTaskById(Long id) {
-        return taskRepository.findById(id).orElse(null);
+        return taskRepository.findById(id)
+            .filter(task -> !task.isDeleted())
+            .orElse(null);
     }
     
     public Task saveTask(Task task) {
@@ -86,7 +88,26 @@ public class TaskService {
         return taskRepository.save(task);
     }
     
+    @Transactional
     public void deleteTask(Long id) {
-        taskRepository.deleteById(id);
+        taskRepository.softDeleteById(id);
+    }
+    
+    // 获取所有任务（包括已删除的）
+    public List<Task> getAllTasksIncludeDeleted() {
+        return taskRepository.findAllByOrderByUpdatedAtDesc();
+    }
+    
+    // 恢复已删除的任务
+    @Transactional
+    public boolean restoreTask(Long id) {
+        Task task = taskRepository.findById(id).orElse(null);
+        if (task != null && task.isDeleted()) {
+            task.setIsDelete(false);
+            task.setUpdatedAt(new Date());
+            taskRepository.save(task);
+            return true;
+        }
+        return false;
     }
 }

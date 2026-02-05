@@ -133,4 +133,22 @@ public class TaskController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+    
+    /**
+     * 恢复已删除的任务
+     */
+    @PutMapping("/{id}/restore")
+    public ResponseEntity<?> restoreTask(@PathVariable Long id) {
+        try {
+            boolean restored = taskService.restoreTask(id);
+            if (restored) {
+                return ResponseEntity.ok().body("{\"message\": \"任务恢复成功\"}");
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("{\"error\": \"恢复任务失败: " + e.getMessage() + "\"}");
+        }
+    }
 }
