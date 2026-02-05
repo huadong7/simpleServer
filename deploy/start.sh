@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# SimpleServer 启动脚本 for /home/simpleServer directory
+# SimpleServer 启动脚本
 # 适用于CentOS服务器部署
 mkdir -p logs
 # 应用基本信息
@@ -9,7 +9,7 @@ APP_VERSION="1.0.0"
 APP_HOME="/home/simpleServer"
 JAR_FILE="${APP_NAME}-${APP_VERSION}.jar"
 CONFIG_FILE="conf/application.properties"
-LOG_FILE="application.log"
+LOG_FILE="logs/application.log"
 PID_FILE="logs/application.pid"
 
 # Java配置
@@ -17,7 +17,7 @@ JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk"
 JAVA_OPTS="-Xms512m -Xmx1024m -server"
 JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF-8"
 JAVA_OPTS="$JAVA_OPTS -Dspring.profiles.active=prod"
-#JAVA_OPTS="$JAVA_OPTS -Dlogging.file.name=${APP_HOME}/logs/${LOG_FILE}"
+JAVA_OPTS="$JAVA_OPTS -Dlogging.file.name=${APP_HOME}/${LOG_FILE}"
 
 # 应用配置
 APP_PORT="37210"

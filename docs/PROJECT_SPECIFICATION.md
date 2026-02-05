@@ -10,211 +10,306 @@
 
 ### 技术栈
 - **框架**: Spring Boot 2.7.0
-- **构建工具**: Maven 3.x
+- **构建工具**: Maven 3.x (本地apache-maven-3.8.6)
 - **数据库**: MySQL 5.7
 - **ORM框架**: Spring Data JPA
 - **Java版本**: Java 8
+- **JSON处理**: Jackson 2.13.3
 
-## 代码规范
+## 项目架构说明
 
-### 包结构规范
+### 整体架构图
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    SimpleServer 应用架构                     │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+│  │   Client    │  │   Client    │  │   Client    │         │
+│  │ Applications│  │  Web Browser│  │   Mobile    │         │
+│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘         │
+│         │                │                │                 │
+│         └────────────────┼────────────────┘                 │
+│                          │                                  │
+│                 ┌────────▼────────┐                        │
+│                 │   REST API      │                        │
+│                 │  Controllers    │                        │
+│                 └────────┬────────┘                        │
+│                          │                                  │
+│                 ┌────────▼────────┐                        │
+│                 │   Services      │                        │
+│                 │  (Business Logic)│                       │
+│                 └────────┬────────┘                        │
+│                          │                                  │
+│                 ┌────────▼────────┐                        │
+│                 │  Repositories   │                        │
+│                 │   (Data Access) │                        │
+│                 └────────┬────────┘                        │
+│                          │                                  │
+│                 ┌────────▼────────┐                        │
+│                 │     JPA/Hibernate│                       │
+│                 │  (ORM Framework) │                       │
+│                 └────────┬────────┘                        │
+│                          │                                  │
+│                 ┌────────▼────────┐                        │
+│                 │    MySQL 5.7    │                        │
+│                 │   (Database)    │                        │
+│                 └─────────────────┘                        │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 代码层次结构
 ```
 com.example.simpleserver
-├── controller/     # 控制器层
-├── service/        # 业务逻辑层
-├── repository/     # 数据访问层
-├── model/          # 实体模型层
-├── config/         # 配置类
-└── exception/      # 异常处理类
+├── SimpleServerApplication.java    # 应用启动类
+├── config/                         # 配置类
+│   ├── DatabaseConfig.java         # 数据库配置
+│   └── WebConfig.java             # Web配置
+├── controller/                     # 控制器层
+│   └── TaskController.java         # 任务管理API
+├── service/                        # 业务逻辑层
+│   └── TaskService.java            # 任务业务逻辑
+├── repository/                     # 数据访问层
+│   └── TaskRepository.java         # 任务数据访问
+├── model/                          # 实体模型层
+│   ├── Task.java                   # 任务实体
+│   └── SyncResponse.java           # 同步响应模型
+└── exception/                      # 异常处理(预留)
 ```
 
-### 实体类规范
-```java
-@Data
-@Entity
-@Table(name = "table_name")
-public class EntityName {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @Column(name = "column_name")
-    private String fieldName;
-    
-    // 显式定义关键setter方法
-    public void setId(Long id) {
-        this.id = id;
-    }
-}
+### 核心组件说明
+
+#### 1. 控制层 (Controller)
+- **TaskController**: 提供RESTful API接口
+- 处理HTTP请求和响应
+- 参数验证和错误处理
+- 路径前缀: `/api/tasks`
+
+#### 2. 服务层 (Service)
+- **TaskService**: 实现业务逻辑
+- 数据同步处理
+- 任务状态管理
+- 事务控制
+
+#### 3. 数据访问层 (Repository)
+- **TaskRepository**: 数据持久化操作
+- 基于Spring Data JPA
+- 自定义查询方法
+- 软删除支持
+
+#### 4. 实体层 (Model)
+- **Task**: 任务实体类
+- 映射数据库表结构
+- 包含软删除字段
+- Lombok注解简化代码
+
+## 部署架构
+
+### 构建流程
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   开发环境      │    │   构建过程      │    │   部署包        │
+│                 │    │                 │    │                 │
+│  src/main/java  │───▶│  Maven Compile  │───▶│  deploy/        │
+│  src/main/resources│  │  Maven Package  │    │  ├── conf/      │
+│                 │    │                 │    │  ├── logs/      │
+│                 │    │                 │    │  └── *.jar      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
-### API设计规范
-- 遵循RESTful规范
-- 使用标准HTTP状态码
-- 统一响应结构包装
-- 接口路径统一前缀：`/api/`
-
-### 数据库规范
-- 字段命名采用下划线风格
-- 时间字段统一使用`created_at`和`updated_at`
-- 布尔类型字段使用`is_xxx`命名
-- JSON字段使用`JSON`数据类型
-
-## 部署规范
-
-### 目录结构
+### 部署目录结构
 ```
-生产环境部署目录: /home/simpleServer/
+deploy/
+├── conf/                           # 配置文件目录
+│   └── application.properties      # 应用配置文件
+├── logs/                           # 日志目录(运行时生成)
 ├── simpleServer-1.0.0.jar          # 主应用程序
-├── application.properties          # 配置文件
-├── start-simpleServer.sh          # 启动脚本
-├── health-check.sh                # 健康检查脚本
-└── 日志文件                        # 自动生成
+├── start.sh                        # Linux启动脚本
+└── start.bat                       # Windows启动脚本
 ```
 
-### 构建规范
-- 开发时构建输出到`target/`目录
-- 部署包生成到`deploy/`目录
-- 部署包只包含运行必需文件
-
-### 启动脚本规范
-```bash
-# 应用管理命令
-./start-simpleServer.sh start    # 启动应用
-./start-simpleServer.sh stop     # 停止应用
-./start-simpleServer.sh restart  # 重启应用
-./start-simpleServer.sh status   # 查看状态
-./start-simpleServer.sh health   # 健康检查
-./start-simpleServer.sh logs     # 查看日志
+### 运行时架构
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    运行时环境                               │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+│  │   JVM       │  │   应用程序   │  │   配置文件   │         │
+│  │             │  │             │  │             │         │
+│  │  Heap Memory│  │  simpleServer│  │ application.│         │
+│  │  Metaspace  │  │    1.0.0     │  │ properties  │         │
+│  └─────────────┘  └─────────────┘  └─────────────┘         │
+│         │                │                │                 │
+│         └────────────────┼────────────────┘                 │
+│                          │                                  │
+│                 ┌────────▼────────┐                        │
+│                 │   数据库连接池   │                        │
+│                 │   (HikariCP)    │                        │
+│                 └────────┬────────┘                        │
+│                          │                                  │
+│                 ┌────────▼────────┐                        │
+│                 │   MySQL 5.7     │                        │
+│                 │   Connection    │                        │
+│                 └─────────────────┘                        │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-## 配置规范
+## 数据流说明
 
-### application.properties 核心配置
+### API请求处理流程
+1. **客户端发起请求** → REST Controller
+2. **参数验证** → Controller层处理
+3. **业务逻辑调用** → Service层执行
+4. **数据持久化** → Repository层操作
+5. **数据库交互** → JPA/Hibernate处理
+6. **响应返回** → JSON序列化返回客户端
+
+### 数据同步流程
+```
+Client ──发送任务数据──▶ TaskController.syncTasks()
+                              │
+                              ▼
+                       TaskService.syncTasks()
+                              │
+                              ▼
+                    ┌─────────────────┐
+                    │  批量处理逻辑    │
+                    │  - 新建任务      │
+                    │  - 更新任务      │
+                    │  - 错误处理      │
+                    └────────┬────────┘
+                              │
+                              ▼
+                       TaskRepository
+                              │
+                              ▼
+                         MySQL Database
+```
+
+## 配置管理体系
+
+### 多环境配置
+```
+配置优先级(从高到低):
+1. 环境变量 (DB_URL, DB_USERNAME, DB_PASSWORD)
+2. 外部配置文件 (deploy/conf/application.properties)
+3. Jar包内默认配置 (src/main/resources/application.properties)
+```
+
+### 配置文件结构
 ```properties
-# 服务器配置
+# 核心配置
 server.port=37210
-server.address=0.0.0.0
+spring.profiles.active=prod
 
-# 数据库配置
-spring.datasource.url=jdbc:mysql://localhost:3306/simpleserver
-spring.datasource.username=username
-spring.datasource.password=password
+# 数据库配置(环境变量优先)
+spring.datasource.url=${DB_URL:jdbc:mysql://localhost:3306/simpleserver}
+spring.datasource.username=${DB_USERNAME:root}
+spring.datasource.password=${DB_PASSWORD:}
 
 # JPA配置
 spring.jpa.hibernate.ddl-auto=validate
 spring.jpa.show-sql=false
 
 # 日志配置
-logging.level.com.example.simpleserver=INFO
-logging.file.name=/home/simpleServer/application.log
+logging.config=classpath:logback-spring.xml
+logging.file.name=logs/simpleServer.log
 ```
 
-## 开发流程规范
+## 安全架构
 
-### 标准开发流程
-1. 环境检查与准备
-2. 项目结构创建
-3. 依赖配置与构建
-4. 应用启动与验证
-5. 问题诊断与修复
-6. 数据初始化
-7. 功能测试
-8. 部署包生成
+### 数据安全
+- **密码安全**: 数据库密码通过环境变量传递，不在配置文件中硬编码
+- **传输安全**: 生产环境建议启用SSL/TLS
+- **访问控制**: API接口权限控制(预留)
 
-### 问题处理规范
-1. 优先检查端口占用情况
-2. 验证数据库连接配置
-3. 确认依赖包版本兼容性
-4. 检查实体类与数据库字段映射
-5. 查看详细错误日志
+### 部署安全
+- **文件权限**: 部署目录权限最小化
+- **进程隔离**: 应用运行在专用用户下
+- **日志保护**: 敏感信息不记录到日志
 
-## 数据库初始化规范
+## 监控与运维
 
-### 建表语句规范
-```sql
-CREATE TABLE table_name (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    field_name VARCHAR(255) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+### 健康检查机制
 ```
-
-### 数据初始化规范
-- 统一生成建表和示例数据脚本
-- 确保字段定义完整（包括默认值）
-- 命名保持一致性
-- 同步更新实体类@Column映射
-
-## 版本管理规范
-
-### 文件版本控制
-- pom.xml中维护版本号
-- 部署包文件名包含版本信息
-- 配置文件按环境区分
-
-### 备份规范
-- 部署前备份当前版本
-- 配置文件变更前备份
-- 数据库定期备份
-
-## 监控与维护规范
+Health Check Endpoint: GET /actuator/health
+Health Check Script: deploy/health-check.sh
+Monitoring Points:
+├── Application Status
+├── Database Connection
+├── Memory Usage
+└── Disk Space
+```
 
 ### 日志管理
-- 应用日志: `/home/simpleServer/application.log`
-- 启动日志: `/home/simpleServer/startup.log`
-- 定期清理过期日志文件
+```
+日志级别: INFO (生产), DEBUG (开发)
+日志文件: deploy/logs/simpleServer.log
+日志轮转: 按日期分割，保留30天
+```
 
-### 健康检查
-- 定期执行健康检查脚本
-- 监控应用进程状态
-- 自动故障恢复机制
+### 性能指标
+- **响应时间**: API平均响应时间 < 200ms
+- **并发处理**: 支持100+并发请求
+- **内存使用**: JVM堆内存使用率 < 80%
+- **数据库连接**: 连接池使用率监控
 
-### 性能监控
-- 监控内存使用情况
-- 监控数据库连接池
-- 监控API响应时间
+## 扩展性设计
 
-## 安全规范
+### 水平扩展
+- **无状态设计**: Controller层无状态，支持负载均衡
+- **数据库连接池**: 可配置连接池大小适应并发需求
+- **缓存机制**: 预留Redis缓存集成点
 
-### 访问控制
-- 生产环境关闭调试信息
-- 配置合适的CORS策略
-- 敏感信息加密存储
+### 垂直扩展
+- **JVM调优**: 可调整堆内存大小
+- **线程池配置**: 可配置Tomcat线程池
+- **数据库优化**: 支持读写分离架构
 
-### 权限管理
-- 应用运行使用专用用户
-- 文件权限最小化原则
-- 定期审查访问权限
+## 故障处理机制
 
-## 故障排除指南
+### 自动恢复
+```
+故障检测 ──▶ 健康检查 ──▶ 自动重启 ──▶ 告警通知
+    │            │            │            │
+    ▼            ▼            ▼            ▼
+ 应用停止    状态异常    重启应用    运维介入
+```
 
-### 常见问题及解决方案
+### 错误处理
+- **全局异常处理**: 统一错误响应格式
+- **事务回滚**: 数据库操作失败自动回滚
+- **熔断机制**: 数据库连接失败时的降级处理
 
-1. **端口被占用**
-   ```bash
-   netstat -tlnp | grep :37210
-   kill -9 PID
-   ```
+## 版本演进规划
 
-2. **数据库连接失败**
-   - 检查MySQL服务状态
-   - 验证数据库用户权限
-   - 确认数据库存在
+### 当前版本 (v1.0.0)
+- ✅ 基础CRUD操作
+- ✅ 任务同步功能
+- ✅ 软删除机制
+- ✅ 多环境配置
+- ✅ 安全部署架构
 
-3. **启动失败**
-   - 查看启动日志
-   - 检查Java环境
-   - 验证配置文件
+### 未来规划
+```
+v1.1.0: 性能优化和监控增强
+├── 添加Actuator监控端点
+├── 实现缓存机制
+└── 完善日志分析
 
-4. **内存不足**
-   - 调整JVM参数
-   - 检查服务器资源
-   - 优化应用配置
+v1.2.0: 安全增强
+├── JWT认证授权
+├── API限流控制
+└── 审计日志记录
+
+v2.0.0: 微服务架构
+├── 服务拆分
+├── 消息队列集成
+└── 容器化部署
+```
 
 ## 参考文档
 
-- [DEPLOY_CENTOS_HOME.md](DEPLOY_CENTOS_HOME.md) - CentOS部署详细说明
-- [DEPLOY_PACKAGE_HOME.md](DEPLOY_PACKAGE_HOME.md) - 部署包使用说明
-- [README.md](README.md) - 项目说明文档
+- [README.md](../README.md) - 项目说明和快速开始
+- [DEPLOY_CENTOS_HOME.md](../DEPLOY_CENTOS_HOME.md) - CentOS部署指南
+- [DEPLOY_PACKAGE_HOME.md](../DEPLOY_PACKAGE_HOME.md) - 部署包说明
+- [PROJECT_STRUCTURE.md](../PROJECT_STRUCTURE.md) - 项目结构详细说明
